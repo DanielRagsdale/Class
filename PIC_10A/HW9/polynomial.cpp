@@ -245,15 +245,24 @@ void pic10a::plot(polynomial p) {
   //Create plot data
   CImg<double> values(1, nresolution, 1, 1, 0);
 
+  std::cout << "stats" << nresolution << "\n";
+
   const unsigned int r = nresolution - 1;
 
   for (int i1 = 0; i1 < resolution; ++i1) {
     double xtime = x0 + i1*(x1 - x0) / r;
     values(0, i1) = p(xtime);
   }
-
+	
   CImg<double> values2;
   values2 = values.display_graph(formula, plot_type, vertex_type, "X Axis", x0, x1, "Y Axis");
-  values.normalize(0, 255);
-  values.save_bmp("plot.bmp");
+  //values2.normalize(0, 255);
+  //values2.save_png("plot.png");
 }
+
+
+
+
+
+
+
