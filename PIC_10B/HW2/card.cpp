@@ -47,22 +47,26 @@ bool Card::operator<(const Card& rhs)
 	{
 		return true;
 	}
+	if(expDate == "0")
+	{
+		return false;
+	}
 
 	//mm/dd/yyyy
 
 	if (expDate.substr(6) != rhs.expDate.substr(6))
 	{
-		return expDate.substr(6) < expDate.substr(6);
+		return expDate.substr(6) < rhs.expDate.substr(6);
 	}
 
 	if (expDate.substr(0,2) != rhs.expDate.substr(0,2))
 	{
-		return expDate.substr(0,2) < expDate.substr(0,2);
+		return expDate.substr(0,2) < rhs.expDate.substr(0,2);
 	}	
 	
 	if (expDate.substr(3, 2) != rhs.expDate.substr(3, 2))
 	{
-		return expDate.substr(3, 2) < expDate.substr(3, 2);
+		return expDate.substr(3, 2) < rhs.expDate.substr(3, 2);
 	}
 
 	return false;
