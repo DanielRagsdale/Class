@@ -5,6 +5,11 @@
 
 #include"card.h"
 
+bool compCardPointers( Card* lhs, Card* rhs)
+{
+	return (*lhs) < (*rhs);
+}
+
 int main()
 {
 	std::cout << "*******************\n";
@@ -51,8 +56,7 @@ int main()
 		cards.push_back(c);
 	} 
 
-
-	//std::sort (cards.begin(), cards.begin() + cards.size());
+	std::sort (cards.begin(), cards.end(), compCardPointers);
 	
 
 	std::cout << "\n";
