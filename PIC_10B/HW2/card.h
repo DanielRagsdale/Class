@@ -11,10 +11,10 @@ private:
 	std::string expDate;
 
 public:
-	//Card(std::string in, std::string hn, std::string ed) : instName(in), holderName(hn), expDate(ed) {}
-
 	virtual Card* create();
 	virtual std::string toString();
+
+	bool operator<(const Card& rhs);
 };
 
 class IDCard : public Card
