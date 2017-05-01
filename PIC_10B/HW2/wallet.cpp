@@ -1,3 +1,33 @@
+/* 
+ *
+ * Homework # 2
+ *
+ * Author: Daniel Ragsdale
+ *
+ * Email: danielr@ucla.edu
+ *
+ * Course: PIC 10B Lecture 1 Spring 2017
+ *
+ * Collaborators:
+ *
+ *
+ *
+ * Honesty Pledge: 
+ *
+ * I, Daniel Ragsdale, pledge that this is my independent work and abide by the guidelines of honesty 
+ *
+ * outlined in the syllabus. 
+ *
+ *
+ *
+ * User inputs: Follow prompts
+ *
+ * Output: Sorted list of cards
+ *
+ * List of known bugs: None. None compliant inputs can result in crashes. Tested with g++ and visual studio
+ *
+ */
+
 #include<iostream>
 #include<algorithm>
 #include<string>
@@ -5,11 +35,16 @@
 
 #include"card.h"
 
-bool compCardPointers( Card* lhs, Card* rhs)
-{
-	return (*lhs) < (*rhs);
-}
+/**
+ * Compare the card objects represented by the pointers
+ * rather than the pointers themselves
+ */
+bool compCardPointers(Card* lhs, Card* rhs);
 
+/**
+ * 1. Prompt the user for input
+ * 2. Format and print ordered list of cards
+ */
 int main()
 {
 	std::cout << "*******************\n";
@@ -27,11 +62,10 @@ int main()
 
 	std::string cType = "0";
 
-
+	//Input loop
 	while(true)
 	{
-		Card* c;
-		
+		Card* c; 
 		std::cout << "\nCard type : ";
 		std::getline(std::cin, cType);	
 		if(cType == "1")
@@ -61,6 +95,7 @@ int main()
 
 	std::cout << "\n";
 
+	//Output loop
 	for(int i = 0; i < cards.size(); i++)
 	{
 		std::cout << cards[i]->toString();
@@ -68,6 +103,10 @@ int main()
 	}
 }
 
+bool compCardPointers( Card* lhs, Card* rhs)
+{
+	return (*lhs) < (*rhs);
+}
 
 
 

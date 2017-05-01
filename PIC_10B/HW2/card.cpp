@@ -1,9 +1,19 @@
+/**
+ * Method descriptions are found in card.h
+ */
+
 #include<iostream>
 #include"card.h"
 
+/**
+ * Convert a mmddyyyy string into a mm/dd/yyyy string
+ *
+ * @inString input string to be turned into dateString
+ * @return formatted dateString
+ */
 std::string toDateString(const std::string& inString)
 {
-	if(inString == "0")
+	if(inString == "0" || inString == "" || inString.length() < 6)
 	{
 		return "0";
 	}
@@ -43,6 +53,7 @@ std::string Card::toString()
 
 bool Card::operator<(const Card& rhs)
 {
+	//'0' expiration dates fall at end of list
 	if (rhs.expDate == "0")
 	{
 		return true;
