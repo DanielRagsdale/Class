@@ -4,6 +4,7 @@
 
 #include<string>
 #include<iostream>
+#include<cctype>
 #include<fstream>
 #include<sstream>
 #include"file.h"
@@ -14,6 +15,9 @@ File::File(const std::string& filename)
 {
 	mFilename = filename;
 	mText = "";
+	mCharCount = 0;
+	mWordCount = 0;
+	mLineCount = 0;
 	
 	std::streampos begin, end;
 	std::ifstream fileIn(&mFilename[0]);
@@ -26,7 +30,7 @@ File::File(const std::string& filename)
 		end = fileIn.tellg();
 		fileIn.seekg (0, std::ios::beg);
 
-		mCharCount += end - begin;
+		mCharCount = end - begin;
 
 		std::string line;
 
@@ -61,7 +65,7 @@ bool operator<(const File& lhs, const File& rhs)
 
 bool operator==(const File& lhs, const File& rhs)
 {
-	lhs.mLineCount == rhs.mLineCount;
+	return lhs.mLineCount == rhs.mLineCount;
 }
 
 std::ostream& operator<<(std::ostream& os, const File& file)
