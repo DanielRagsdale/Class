@@ -56,6 +56,10 @@ void ComplexVector::reserve(size_t s)
 	delete[] mData;
 	mData = tempD;
 	
+	if (s < mCapacity)
+	{
+		mSize = s;
+	}
 	mCapacity = s;
 }
 
@@ -85,10 +89,9 @@ void ComplexVector::push_back(ComplexDouble o)
 
 void ComplexVector::pop_back()
 {
-	mData[mSize] = ComplexDouble();
-
-	if(mSize > 0)
+		if(mSize > 0)
 	{
+		mData[mSize - 1] = ComplexDouble();
 		mSize--;
 	}
 }

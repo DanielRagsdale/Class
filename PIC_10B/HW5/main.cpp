@@ -4,6 +4,50 @@
 #include"ComplexDouble.h"
 #include"ComplexVector.h"
 
+/*
+*
+* Homework # 5
+*
+* Author: Daniel Ragsdale
+*
+* Email: danielr@ucla.edu
+*
+* Course: PIC 10B Lecture 1 Spring 2017
+*
+* Collaborators:
+*
+*
+*
+* Honesty Pledge:
+*
+* I, Daniel Ragsdale, pledge that this is my independent work and abide by the guidelines of honesty
+*
+* outlined in the syllabus.
+*
+*
+*
+* User inputs:
+*
+* None
+*
+* Output:
+*
+* v1, v2, v1+v2, v1-v2, v1*v2, v1/v2, TextFile containing the sequence
+*
+* List of known bugs:
+*
+* None.
+*
+* Some behaviors left as undefined if they weren't specified in the spec.
+*
+**/
+
+/**
+* Recursive function to create the complex number sequence up to element n
+*
+* @param n the position of the largest sequence point to be created
+* @return a ComplexVector containing the sequence
+**/
 ComplexVector createSequence(size_t n);
 
 int main()
@@ -35,8 +79,13 @@ int main()
 	
 	if(sequence)
 	{
+		std::cout << "Writing ComplexSequence.txt to file" << std::endl;
 		sequence << createSequence(5);
 		sequence.close();
+	}
+	else
+	{
+		std::cout << "ComplexSequence.txt failed to open" << std::endl;
 	}
 }
 
