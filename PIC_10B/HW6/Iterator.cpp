@@ -9,7 +9,9 @@ void Iterator::insert(int val)
 
 void Iterator::erase()
 {
-	*activeNode = (*activeNode)->next;
+	Node* temp = (*activeNode)->next;
+	delete activeNode;
+	*activeNode = temp;
 }
 
 bool Iterator::has_next()
