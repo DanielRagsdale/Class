@@ -1,6 +1,10 @@
 #include"TreeIterator.h"
 #include"BinarySearchTree.h"
 
+/**
+ * Method descriptions are found in header files.
+ **/
+
 TreeIterator::TreeIterator(TreeNode* r) : root(r), path() 
 {
 	path.push_back(root);
@@ -14,12 +18,15 @@ TreeIterator::TreeIterator(TreeNode* r) : root(r), path()
 void TreeIterator::back()
 {
 	path.clear();
+
+	/*
 	path.push_back(root);
 
 	while(path.back()->right != nullptr)
 	{
 		path.push_back(path.back()->right);
 	}
+	*/
 }
 
 
@@ -30,6 +37,8 @@ int& TreeIterator::operator*()
 
 TreeIterator& TreeIterator::operator++()
 {
+
+
 	if(path.back()->right != nullptr)
 	{
 		path.push_back(path.back()->right);
@@ -48,7 +57,7 @@ TreeIterator& TreeIterator::operator++()
 		return *this;
 	}
 
-	while(path.size() > 1 && path.back() == path[path.size() - 2]->right)
+	while(path.size()  > 1 && path.back() == path[path.size() - 2]->right)
 	{
 		path.pop_back();		
 	}
@@ -100,12 +109,37 @@ TreeIterator TreeIterator::operator--(int dummy)
 
 bool operator==(TreeIterator lhs, TreeIterator rhs)
 {
-	return *lhs == *rhs;
+	if(lhs.path.size() == rhs.path.size())
+	{
+		if(lhs.path.size() != 0)
+		{
+			return *lhs == *rhs;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	return false;	
 }
+
+#include<iostream>
 
 bool operator!=(TreeIterator lhs, TreeIterator rhs)
 {
-	return *lhs != *rhs;
+	if(lhs.path.size() == rhs.path.size())
+	{
+		if(lhs.path.size() != 0)
+		{
+			return *lhs != *rhs;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	return true;
 }
 
 

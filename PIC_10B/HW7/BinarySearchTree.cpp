@@ -5,6 +5,11 @@
 #include"TreeNode.h"
 #include"TreeIterator.h"
 
+
+/**
+ * Method descriptions are found in header files.
+ **/
+
 void BinarySearchTree::insert(int val)
 {
 	TreeNode** addLoc = find(val);
